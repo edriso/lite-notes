@@ -12,7 +12,7 @@
                     <h3 class="text-xl font-bold">
                         <a href="{{ route('notes.show', $note->id) }}">{{ $note->title }}</a>
                     </h3>
-                    <p class="py-2">{{ Str::limit($note->description, 150, '...') }}</p>
+                    <p class="py-2">{{ Str::limit($note->details, 150, '...') }}</p>
                     <span class="block text-sm text-gray-700">
                         {{ $note->updated_at->diffForHumans(['aUnit' => true]) }}
                     </span>

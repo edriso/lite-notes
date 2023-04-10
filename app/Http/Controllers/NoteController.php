@@ -32,13 +32,13 @@ class NoteController extends Controller
     {
         $request->validate([
             'title' => 'required|max:100',
-            'description' => 'required'
+            'details' => 'required'
         ]);
 
         Note::create([
             'user_id' => Auth::id(),
             'title' => $request->title,
-            'description' => $request->description
+            'details' => $request->details
         ]);
 
         return to_route('notes.index');

@@ -14,7 +14,7 @@
             </div>
 
             <div class="mb-6 p-6 text-gray-900 bg-white border-b overflow-hidden shadow-sm sm:rounded-lg">
-                <p class="whitespace-pre-wrap">{{ $note->description }}</p>
+                <p class="whitespace-pre-wrap">{{ $note->details }}</p>
             </div>
         </div>
     </div>
