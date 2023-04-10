@@ -52,6 +52,8 @@ class NoteController extends Controller
     public function show(Note $note)
     {
         // $note = Note::where('uuid', $uuid)->where('user_id', Auth::id())->firstOrFail();
+        // we can use Gates and Policies instead if if condition
+        // https://laravel.com/docs/10.x/authorization
         if ($note->user_id !== Auth::id()) {
             return abort(403);
         }
