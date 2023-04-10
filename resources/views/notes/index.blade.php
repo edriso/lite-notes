@@ -18,9 +18,12 @@
                     </span>
                 </div>
             @empty
-                <p class="p-6 text-gray-900 bg-white border-b overflow-hidden shadow-sm sm:rounded-lg">
-                    You have no notes yet!
-                </p>
+
+                <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+                    <div class="p-6 text-gray-900">
+                        {{ __('You have not taken notes yet!') }}
+                    </div>
+                </div>
             @endforelse
 
             {{ $notes->links() }}
