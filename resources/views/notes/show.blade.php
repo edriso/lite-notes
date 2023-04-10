@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Create New Note') }}
+            {{ $note->title }}
         </h2>
     </x-slot>
 
@@ -14,10 +14,10 @@
             </div>
 
             <div class="mb-6 p-6 text-gray-900 bg-white border-b overflow-hidden shadow-sm sm:rounded-lg">
-                <h3 class="text-4xl font-bold">
+                {{-- <h3 class="text-4xl font-bold">
                     {{ $note->title }}
-                </h3>
-                <p class="mt-4 whitespace-pre-wrap">{{ $note->description }}</p>
+                </h3> --}}
+                <p class="whitespace-pre-wrap">{{ $note->description }}</p>
             </div>
         </div>
     </div>
