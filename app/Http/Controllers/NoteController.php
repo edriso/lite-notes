@@ -49,9 +49,9 @@ class NoteController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(string $uuid)
     {
-        $note = Note::where('uuid', $id)->where('user_id', Auth::id())->firstOrFail();
+        $note = Note::where('uuid', $uuid)->where('user_id', Auth::id())->firstOrFail();
         return view('notes.show')->with('note', $note);
     }
 
