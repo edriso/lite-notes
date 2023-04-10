@@ -10,7 +10,7 @@
             @forelse ($notes as $note)
                 <div class="mb-6 p-6 text-gray-900 bg-white border-b overflow-hidden shadow-sm sm:rounded-lg">
                     <h3 class="text-xl font-bold">
-                        <a href="{{ route('notes.show', $note->uuid) }}">{{ $note->title }}</a>
+                        <a href="{{ route('notes.show', $note) }}">{{ $note->title }}</a>
                     </h3>
                     <p class="py-2">{{ Str::limit($note->details, 150, '...') }}</p>
                     <span class="block text-sm text-gray-700">
