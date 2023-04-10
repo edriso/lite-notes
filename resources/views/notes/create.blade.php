@@ -11,13 +11,13 @@
                 <div class="p-6 text-gray-900">
                     <form method="POST" action="{{ route('notes.store') }}">
                         @csrf
-                        <x-text-input type="text" name="title" class="w-full mb-4" placeholder="Title" />
-
-                        <x-textarea name="discription" class="w-full mb-4" cols="30" rows="10"
-                            placeholder="Start typing here...">
+                        <x-text-input field="title" :value="@old('titlee')" type="text" name="title" class="w-full"
+                            placeholder="Title" />
+                        <x-textarea field="description" :value="@old('description')" name="description" class="w-full mt-4"
+                            cols="30" rows="10" placeholder="Start typing here...">
                         </x-textarea>
 
-                        <x-primary-button class="w-full justify-center">Save Note</x-primary-button>
+                        <x-primary-button class="w-full justify-center mt-4">Save Note</x-primary-button>
                     </form>
                 </div>
             </div>
