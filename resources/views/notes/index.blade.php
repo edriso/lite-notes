@@ -13,7 +13,11 @@
             @forelse ($notes as $note)
                 <div class="mb-6 p-6 text-gray-900 bg-white border-b overflow-hidden shadow-sm sm:rounded-lg">
                     <h3 class="text-xl font-bold">
-                        <a href="{{ route('notes.show', $note) }}">{{ $note->title }}</a>
+                        @if (request()->routeIs('notes.index'))
+                            <a href="{{ route('notes.show', $note) }}">{{ $note->title }}</a>
+                        @else
+                            <a href="{{ route('trashed.show', $note) }}">{{ $note->title }}</a>
+                        @endif
                     </h3>
                     <p class="py-2">{{ Str::limit($note->details, 150, '...') }}</p>
                     <span class="block text-sm text-gray-700">
