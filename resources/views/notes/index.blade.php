@@ -7,6 +7,9 @@
 
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+            <x-alert-success>
+                {{ session('success') }}
+            </x-alert-success>
             @forelse ($notes as $note)
                 <div class="mb-6 p-6 text-gray-900 bg-white border-b overflow-hidden shadow-sm sm:rounded-lg">
                     <h3 class="text-xl font-bold">

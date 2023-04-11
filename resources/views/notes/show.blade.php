@@ -7,13 +7,16 @@
 
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+            <x-alert-success>
+                {{ session('success') }}
+            </x-alert-success>
             <div class="flex justify-between mb-2">
                 <div>
-                    <span class="text-gray-700 text-sm">
+                    <span class="text-gray-700 text-sm mr-8">
                         <strong>Created:</strong> {{ $note->created_at->diffForHumans() }}
                     </span>
-                    <span class="text-gray-700 text-sm ml-8">
-                        <strong>Update:</strong> {{ $note->updated_at->diffForHumans() }}
+                    <span class="text-gray-700 text-sm">
+                        <strong>Updated:</strong> {{ $note->updated_at->diffForHumans() }}
                     </span>
                 </div>
                 <div class="flex">
@@ -21,7 +24,7 @@
                     <form method="post" action="{{ route('notes.destroy', $note) }}" class="ml-4">
                         @method('delete')
                         @csrf
-                        <x-danger-button onclick="return confirm('Delete This Note?')">Delete</x-danger-button>
+                        <x-danger-button onclick="return confirm('Delete This Note?')">Delete Note</x-danger-button>
                     </form>
                 </div>
             </div>
