@@ -16,8 +16,13 @@
                         <strong>Update:</strong> {{ $note->updated_at->diffForHumans() }}
                     </span>
                 </div>
-                <div>
+                <div class="flex">
                     <a href="{{ route('notes.edit', $note) }}" class="btn-link text-xs">Edit Note</a>
+                    <form method="post" action="{{ route('notes.destroy', $note) }}" class="ml-4">
+                        @method('delete')
+                        @csrf
+                        <x-danger-button onclick="return confirm('Delete This Note?')">Delete</x-danger-button>
+                    </form>
                 </div>
             </div>
 
