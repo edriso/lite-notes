@@ -25,7 +25,7 @@
                         <form method="post" action="{{ route('notes.destroy', $note) }}" class="ml-4">
                             @method('delete')
                             @csrf
-                            <x-danger-button onclick="return confirm('Delete This Note?')">
+                            <x-danger-button onclick="return confirm('Move this note to trash?')">
                                 Move to trash
                             </x-danger-button>
                         </form>
@@ -46,13 +46,13 @@
                                 Restore
                             </x-secondary-button>
                         </form>
-                        {{-- <form method="post" action="{{ route('notes.destroy', $note) }}" class="ml-4">
+                        <form method="post" action="{{ route('trashed.destroy', $note) }}" class="ml-4">
                             @method('delete')
                             @csrf
-                            <x-danger-button onclick="return confirm('Delete This Note?')">
+                            <x-danger-button onclick="return confirm('Delete this note permanently?')">
                                 Delete
                             </x-danger-button>
-                        </form> --}}
+                        </form>
                     </div>
                 </div>
             @endif
