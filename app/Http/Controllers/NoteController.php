@@ -14,7 +14,9 @@ class NoteController extends Controller
      */
     public function index()
     {
-        $notes = Note::where('user_id', Auth::id())->latest('updated_at')->paginate(5);
+        // $notes = Note::where('user_id', Auth::id())->latest('updated_at')->paginate(5);
+        // $notes = Auth::user()->notes()->latest('updated_at')->paginate(5);
+        $notes = Note::whereBelongsTo(Auth::user())->latest('updated_at')->paginate(5);
         return view('notes.index')->with('notes', $notes);
     }
 
@@ -36,6 +38,11 @@ class NoteController extends Controller
             'details' => 'required'
         ]);
 
+        // Auth::user()->notes()->create([
+        //     'uuid' => Str::uuid(),
+        //     'title' => $request->title,
+        //     'details' => $request->details
+        // ]);
         Note::create([
             'uuid' => Str::uuid(),
             'user_id' => Auth::id(),
@@ -54,9 +61,10 @@ class NoteController extends Controller
         // $note = Note::where('uuid', $uuid)->where('user_id', Auth::id())->firstOrFail();
         // we can use Gates and Policies instead if if condition
         // https://laravel.com/docs/10.x/authorization
-        if ($note->user_id !== Auth::id()) {
+        if (!$note->user->is(Auth::user())) {
             return abort(403);
         }
+
         return view('notes.show')->with('note', $note);
     }
 
@@ -65,7 +73,7 @@ class NoteController extends Controller
      */
     public function edit(Note $note)
     {
-        if ($note->user_id !== Auth::id()) {
+        if (!$note->user->is(Auth::user())) {
             return abort(403);
         }
 
@@ -77,7 +85,7 @@ class NoteController extends Controller
      */
     public function update(Request $request, Note $note)
     {
-        if ($note->user_id !== Auth::id()) {
+        if (!$note->user->is(Auth::user())) {
             return abort(403);
         }
 
