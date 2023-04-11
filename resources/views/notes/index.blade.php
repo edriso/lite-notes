@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('My Notes') }}
+            {{ request()->routeIs('notes.index') ? __('My Notes') : __('Trash') }}
         </h2>
     </x-slot>
 
@@ -23,7 +23,7 @@
             @empty
                 <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                     <div class="p-6 text-gray-900">
-                        {{ __('You have not taken notes yet!') }}
+                        {{ request()->routeIs('notes.index') ? __('You have not taken notes yet!') : __('Trash is empty!') }}
                     </div>
                 </div>
             @endforelse
