@@ -2,7 +2,7 @@
 
 Notes management app using Laravel
 
-## Main Features
+### Main Features
 
 -   Breeze for authentication
 -   Resource controller form CRUD operations
@@ -12,7 +12,11 @@ Notes management app using Laravel
 -   Eloquent relationships
 -   Naming conventions and best practices
 
-## Installation
+### Preview GIF
+
+![preview](preview.gif)
+
+### Installation
 
 -   Run `composer install`
 -   Run `cp .env.example .env`
@@ -21,7 +25,7 @@ Notes management app using Laravel
 -   Then Run `npm install && npm run dev`, and in another terminal run `php artisan serve`
 -   Go to link localhost:8000
 
-##### Future ideas
+#### Future ideas
 
 -   Using Gates and Policies
 -   Search feature
