@@ -75,9 +75,23 @@ class NoteController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Note $note)
     {
-        //
+        if ($note->user_id !== Auth::id()) {
+            return abort(403);
+        }
+
+        $request->validate([
+            'title' => 'required|max:100',
+            'details' => 'required'
+        ]);
+
+        $note->update([
+            'title' => $request->title,
+            'details' => $request->details
+        ]);
+
+        return to_route('notes.show', $note);
     }
 
     /**
