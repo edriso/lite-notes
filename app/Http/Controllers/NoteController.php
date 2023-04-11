@@ -63,9 +63,13 @@ class NoteController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Note $note)
     {
-        //
+        if ($note->user_id !== Auth::id()) {
+            return abort(403);
+        }
+
+        return view('notes.edit')->with('note', $note);
     }
 
     /**
